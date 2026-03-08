@@ -239,14 +239,48 @@ publish_status: 已发布到草稿箱
 请检查文件路径是否正确，或提供有效的Markdown文件路径。
 ```
 
-### 错误2：依赖问题
+### 错误2：依赖问题（bun缓存损坏）
 
-**如果遇到模块错误（如unist-util-visit）：**
+**错误信息：**
+```
+Cannot find module 'unist-util-visit-parents/do-not-use-color'
+```
+
+**原因：** bun 缓存中的模块损坏
 
 **解决方案：**
-1. 清理bun缓存：`rm -rf ~/.bun/install/cache/unist-util-*`
-2. 使用手动HTML创建方式（本skill默认方式）
-3. 直接粘贴HTML内容到编辑器
+
+**方案A：清理bun缓存（推荐）**
+```bash
+rm -rf ~/.bun/install/cache/*
+```
+清理后重试。
+
+**方案B：使用备用脚本（100%成功）**
+
+如果方案A无效，使用内置的备用脚本：
+
+```bash
+# 1. 先用备用脚本将Markdown转为HTML（含base64图片）
+npx -y bun .claude/skills/bo-x-pubwechat/scripts/convert-to-html.js "markdown文件路径"
+
+# 2. 然后用 --html 参数发布
+npx -y bun /c/Users/tju_g/.claude/skills/baoyu-post-to-wechat/scripts/wechat-article.ts --html "生成的HTML文件路径" --author "作者名" --submit
+```
+
+**备用脚本位置：**
+`.claude/skills/bo-x-pubwechat/scripts/convert-to-html.js`
+
+**完整命令示例：**
+```bash
+# Step 1: 转换
+npx -y bun .claude/skills/bo-x-pubwechat/scripts/convert-to-html.js "05-图文工厂/公众号/文章标题-公众号.md"
+
+# Step 2: 发布
+npx -y bun /c/Users/tju_g/.claude/skills/baoyu-post-to-wechat/scripts/wechat-article.ts --html "05-图文工厂/公众号/文章标题-公众号.html" --author "作者" --submit
+```
+
+---
 
 ### 错误3：浏览器启动失败
 

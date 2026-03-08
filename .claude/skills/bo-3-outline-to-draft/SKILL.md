@@ -88,7 +88,7 @@ stage: 初稿
 content_type: "{{大纲content_type}}"
 platform: "{{大纲platform}}"
 status: 写作中
-source_outline: "[[03-内容工厂/1-大纲挑选区/原大纲文件]]"
+source_outline: "[[03-内容工厂/1-大纲对焦区/原大纲文件]]"
 create_date: "{{DATE:YYYY-MM-DD}}"
 update_date: "{{DATE:YYYY-MM-DD}}"
 word_count: "预计{{字数}}字"
