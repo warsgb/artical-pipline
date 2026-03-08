@@ -4,6 +4,7 @@
 
 # Claude
 .claude/
+!.claude/skills/
 
 # System files
 .DS_Store
