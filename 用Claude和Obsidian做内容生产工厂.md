@@ -8,14 +8,6 @@
 
 用 **Obsidian** 做内容数据库， 用 **OpenClaw** 做执行引擎， 把“灵感到发布”变成一条可复用流水线。
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=YWE5MDk2NmE1YTMxNzQ0MDQwZGQ3NjQyOTVjMDA4YmJfZ0V5blA2cEhjbXdOUUNkeTg2SFdrcFVOWVB0V2dCSm1fVG9rZW46TkZwd2JtbnRCb3psZ2h4alhFR2NJanpFblBkXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
-
-这篇就不讲概念，直接讲怎么搭。
-
-你照着做，今天就能跑起来。
-
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=OWQ2MDNhZTNmOGZiOTVlYTBhZGVhMjExMmJlNzA5M2VfcHVMUXJsNkpJbzBsbnVuWlpJQjdsNFd0TGQxZnJRRnNfVG9rZW46R1ZScGIzVWlxb1pwdVh4dXZ0bGNMVWZ1bjlnXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
-
 ## 一、先想清楚分工：谁存，谁跑
 
 先说结论：
@@ -34,9 +26,6 @@
 官网下载安装即可。
 
 创建一个 文件库。
-
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=YWYzNTA0YjY1MTdmYmQ3YTRlMDNmM2M0MWUzYjNmMGJfbDBrYVhhWG5MaUx4TUtVNXBPMHV2N3R3N0pZV0g5WVBfVG9rZW46UHI1dWJsZ21hb0prMmh4UzUwb2NsR0VvbmloXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
-
 ### 2）安装 obsidian-cli
 
 用openclaw安装即可。
@@ -137,8 +126,6 @@ status:
 
 ### 场景A：你刷到一条灵感
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=MzZiNTYyNDQ0YjJkOWE5MDIyZDU2Mzk0MmFiMzlkYTBfYTk4Y0pYVm9RNmVKc0RqWXM3dkJVNE42Zk5TTFhacnpfVG9rZW46UTVDTGJWZ0FMb1RsMml4Qkx2S2N5bXBkbjJkXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
-
 你只要发一句：
 
 > 把这条存进内容工厂，并给我3个可写选题。
@@ -151,14 +138,9 @@ status:
     
 3. 自动补回链到相关笔记。
     
-
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=Njg5YWIwZTUxNmUyZWIxODdhZThkZTUzNDc4YjRhMTZfT2lLQUxxSE1oQWVhSm0zQXhUMnVpT05NNWtneWY0ZzJfVG9rZW46WGhjNmJ4ZjFSb0FwVEx4c3ViWGNsZjVybjZnXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
-
 而且接上飞书，平时看到好的选题后，只需要在飞书中说一句就可以沉淀到你的内容工厂了。
 
 ### 场景B：你准备开写
-
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NzkxZmFjNmYyNTE0ZDlmNzE1OGVmOTYxODcyZDIwYTJfeFhvS2Q1VjNFNFZIc09MVjBhTVJmb1VEaDBXV3BVbWVfVG9rZW46TGthNmJIWXB6b3pXMGd4RjI1emMzTE9PbkhaXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
 
 你说：
 
@@ -172,8 +154,6 @@ status:
     
 3. 把大纲写入 `03-内容工厂/1-大纲挑选区`。
     
-
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=OGUzYjRlMzJlNmNjM2I5ZjZhZTlhYjdhYmQ5ZGU4ZjVfVVdUUXN0dzg0MVNsazdUd043MzNCWmlLR0x1ekFxMUNfVG9rZW46V24wN2JtMzlwb0VEakh4VWlMcmMwRXVibkNiXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
 
 ### 场景C：你确定要发某平台
 
@@ -194,12 +174,9 @@ status:
 
 写得很不错
 
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=NGQwMzVkYWM5ZDljOTQ3YjQzMzdhMjg1MzM1MDgwMWRfNHNBemtxbzRQMDl6cU8wSkFFRXd3VWc4S0N6YXNMZDdfVG9rZW46UndjZWJwd2lab1RBSmh4TlNGa2NzbWd5bk5lXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
+
 
 也可以直接生成封面图，配图，小红书图片等，你找一个中转API，让它帮你做成一个skill。直接用就行了。
-
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=MGNjNjk0NDkwM2ZkZDYzYzkwNDU4ZjU2YmVmZjFmNDdfQ3M3OVpBUjN2ZnI1Nm1BWFI3TDJYbUZIRFpHNnpUbTVfVG9rZW46UlBsSGJmTEhob2NlY1Z4U0ZFNWNUeHJwbmNkXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
-
 ## 六、给你一些可直接复制的“触发语”
 
 ```Plain
@@ -262,15 +239,3 @@ status:
     
 - 产能更高
     
-
-## 最后
-
-内容工厂的价值，在于你终于不再靠状态创作。
-
-你有了一台会积累、会复用、会进化的系统。
-
-这件事，才是长期价值。
-
-欢迎大家进群一起聊AI，如果是西安的小伙伴，可以直接进西安专属群，我们近期会举办openclaw的专属活动。
-
-![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=YzIxZTI5ODNmNzYyZmNkMzBmMDZlMmNmMWE2MjQzMGJfVm8zQndWYW82R0Q3Qk1BMWxKWHFoRUl2MWdueEFvQUVfVG9rZW46VlFydGJTSkVkb3RXNzh4VFpYRGNweHBabkxoXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)![](https://my.feishu.cn/space/api/box/stream/download/asynccode/?code=YjllYmY2ZWE0MGQ1YjUyNjBlNDc1MDFlNjNlN2E2NzhfQnpOckExVUdjSERtcHdoZGZuQ1NIMTdhbTBnN25PdmZfVG9rZW46T0l1WWJzYklQb1JzMjh4Mk1uZWMxbU9SbmFkXzE3NzI4NzkyNjI6MTc3Mjg4Mjg2Ml9WNA)
