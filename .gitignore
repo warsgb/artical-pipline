@@ -1,12 +1,9 @@
 # Obsidian
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
-.obsidian/plugins/*/data.json
+.obsidian/
 .trash/
 
 # Claude
-.claude/memory/
-.claude/projects/
+.claude/
 
 # System files
 .DS_Store
