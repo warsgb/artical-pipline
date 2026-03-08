@@ -1,0 +1,250 @@
+{
+  "main": {
+    "id": "9f603c7d727983d3",
+    "type": "split",
+    "children": [
+      {
+        "id": "1bbd6928039e2f66",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c14e17524b0de910",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "欢迎.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "欢迎"
+            }
+          },
+          {
+            "id": "e997b1e5addd56c4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00-网文收藏/中国正在卷起一场OpenClaw风暴.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "中国正在卷起一场OpenClaw风暴"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0f55c406a822b1c2",
+    "type": "split",
+    "children": [
+      {
+        "id": "5349e44714ff4d24",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "75f86082170ff595",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "0c8f8ef85715c135",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "tag:#OpenClaw",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "a39e02665af36114",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "860d497db879581f",
+    "type": "split",
+    "children": [
+      {
+        "id": "f94a13b794be8f6e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7d2f24c39b50779",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "00-网文收藏/中国正在卷起一场OpenClaw风暴.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "中国正在卷起一场OpenClaw风暴 的反向链接列表"
+            }
+          },
+          {
+            "id": "a0e9e7849435db40",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "00-网文收藏/中国正在卷起一场OpenClaw风暴.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "中国正在卷起一场OpenClaw风暴 的出链列表"
+            }
+          },
+          {
+            "id": "41247ed6037d502f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "f42419ad341126b4",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "8055587e503ce310",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "00-网文收藏/中国正在卷起一场OpenClaw风暴.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "中国正在卷起一场OpenClaw风暴 的大纲"
+            }
+          },
+          {
+            "id": "2b80ec3a3fee8c31",
+            "type": "leaf",
+            "state": {
+              "type": "claudian-view",
+              "state": {},
+              "icon": "bot",
+              "title": "Claudian"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "claudian:Open Claudian": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false,
+      "workspaces:管理工作区布局": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian42-brat:BRAT": false,
+      "mp-publisher:打开公众号发布": false
+    }
+  },
+  "active": "41247ed6037d502f",
+  "lastOpenFiles": [
+    "05-图文工厂/小红书/2025-03-07-个人如何在Agent时代构建竞争力-小红书版.md",
+    "90-系统配置/Claude Prompt工作流/04-多平台分发.md",
+    "90-系统配置/Claude Prompt工作流/05-发布归档.md",
+    "01-灵感与素材库/1-日常灵感剪报/2025-03-07-OpenClaw风暴-深度分析.md",
+    "05-图文工厂/小红书",
+    "05-图文工厂/小红书文章",
+    "03-内容工厂/3-终稿确认区/2025-03-07-个人如何在Agent时代构建竞争力-终稿.md",
+    "03-内容工厂/2-初稿打磨区/2025-03-07-个人如何在Agent时代构建竞争力-初稿.md",
+    "90-系统配置/Claude Prompt工作流/03-大纲转内容.md",
+    "90-系统配置/规则/工作流规则.md",
+    "02-选题池/待写选题库/2025-03-07-Agent时代的产品设计-从入口战争看创业机会.md",
+    "02-选题池/待写选题库/2025-03-07-个人如何在Agent时代构建竞争力.md",
+    "02-选题池/待写选题库/2025-03-07-大厂为什么拼命推广Agent-揭秘轨迹数据的商业暗战.md",
+    "00-网文收藏/中国正在卷起一场OpenClaw风暴.md",
+    "欢迎.md",
+    "00-网文收藏",
+    "用Claude和Obsidian做内容生产工厂.md",
+    "90-系统配置/模板/选题模板.md",
+    "90-系统配置/Claude Prompt工作流/02-选题转大纲.md",
+    "90-系统配置/Claude Prompt工作流/01-灵感入库.md",
+    "90-系统配置/Claude Prompt工作流",
+    "90-系统配置/模板/复盘模板.md",
+    "90-系统配置/模板/文章模板.md",
+    "90-系统配置/模板/大纲模板.md",
+    "90-系统配置/模板/灵感模板.md",
+    "90-系统配置/看板",
+    "90-系统配置/规则",
+    "90-系统配置/模板",
+    "06-已发布归档/X",
+    "06-已发布归档/公众号",
+    "06-已发布归档/哔哩哔哩"
+  ]
+}
