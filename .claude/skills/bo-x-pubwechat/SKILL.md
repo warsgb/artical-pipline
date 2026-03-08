@@ -62,7 +62,43 @@ test -f "文件路径" && echo "存在" || echo "不存在"
 **自动生成规则：**
 - **摘要**：取第一个段落的前120字符
 
-### 步骤3：转换Markdown为HTML
+### 步骤3：压缩图片并转为base64
+
+**目标：** 减小图片体积，避免HTML文件过大导致粘贴失败
+
+**执行流程：**
+
+```bash
+# 1. 检查文章中是否有本地图片引用
+# 查找 Markdown 中的图片语法：![alt](path/to/image.png)
+
+# 2. 压缩图片为WebP格式（质量75%，体积减少约95%）
+# 使用 sharp 库进行压缩
+
+# 3. 将压缩后的图片转为base64
+# 生成 data:image/webp;base64,xxx 格式
+```
+
+**压缩脚本示例：**
+```javascript
+import sharp from 'sharp';
+
+// 压缩单张图片
+await sharp('image.png')
+  .webp({ quality: 75 })
+  .toFile('image.webp');
+
+// 转为base64
+const buffer = readFileSync('image.webp');
+const base64 = `data:image/webp;base64,${buffer.toString('base64')}`;
+```
+
+**压缩效果：**
+- PNG (2-3MB) → WebP (80-250KB)
+- 压缩率：约95%
+- 6张图片总大小：从15MB降至约1MB
+
+### 步骤4：转换Markdown为HTML（含base64图片）
 
 由于依赖问题，使用手动HTML创建方式：
 
@@ -89,10 +125,16 @@ test -f "文件路径" && echo "存在" || echo "不存在"
 - 粗体 → `<strong>`
 - 列表 → `<ul><li>`
 - 分隔线 → `<hr>`
+- **图片** → `<img src="data:image/webp;base64,xxx" style="max-width:100%">`
+
+**图片处理逻辑：**
+1. 解析Markdown中的图片引用：`![alt](path/to/image.png)`
+2. 如果存在对应的 `.webp` 文件（步骤3生成），使用base64格式
+3. 否则保留原始路径（可能无法在微信中显示）
 
 **保存位置：** 与markdown文件同目录，同名但后缀为`.html`
 
-### 步骤4：发布到微信
+### 步骤5：发布到微信
 
 使用`baoyu-post-to-wechat`技能的`wechat-article.ts`脚本：
 
@@ -136,7 +178,7 @@ npx -y bun /c/Users/tju_g/.claude/skills/baoyu-post-to-wechat/scripts/wechat-art
 [wechat] Done. Browser window left open.
 ```
 
-### 步骤5：更新文章状态
+### 步骤6：更新文章状态
 
 如果发布成功，更新原Markdown文件的frontmatter：
 
@@ -148,7 +190,7 @@ publish_platform: 公众号
 publish_status: 已发布到草稿箱
 ```
 
-### 步骤6：输出报告
+### 步骤7：输出报告
 
 向用户报告发布结果：
 
@@ -159,7 +201,12 @@ publish_status: 已发布到草稿箱
 - 标题：{{标题}}
 - 作者：{{作者}}
 - 摘要：{{摘要前50字}}...
-- 图片：{{N}}张
+
+🖼️ 图片处理：
+- 原图片：{{N}}张 PNG ({{原大小}}MB)
+- 压缩后：{{N}}张 WebP ({{压缩后大小}}MB)
+- 压缩率：{{压缩率}}%
+- 图片已转为base64嵌入HTML
 
 📦 发布结果：
 - 方式：Chrome CDP（浏览器自动化）
@@ -178,6 +225,7 @@ publish_status: 已发布到草稿箱
 💡 提示：
 - 草稿已保存，尚未正式发布
 - 浏览器窗口保持打开，方便检查和编辑
+- 图片已以WebP格式嵌入，如显示异常请检查微信编辑器
 ```
 
 ## 错误处理
@@ -246,16 +294,35 @@ mkdir -p ~/.local/share/baoyu-skills/chrome-profile
 
 **用户输入：**
 ```
-发布公众号：03-内容工厂/3-终稿发布区/2026-03-08-文章标题-终稿.md
+发布公众号：05-图文工厂/公众号/2026-03-08-文章标题-公众号.md
 ```
 
 **执行流程：**
 1. 验证文件存在
 2. 提取标题、作者、摘要
-3. 创建HTML文件
-4. 启动Chrome
-5. 发布到微信草稿箱
-6. 报告成功
+3. **压缩图片**（PNG → WebP，体积减少95%）
+4. **转换Markdown为HTML**（图片转为base64嵌入）
+5. 启动Chrome
+6. 发布到微信草稿箱
+7. 报告成功
+
+**输出示例：**
+```
+✅ 微信公众号发布成功！
+
+📄 文章信息：
+- 标题：从用户痛点到蓝海市场：AI驱动的创业新思路
+
+🖼️ 图片处理：
+- 原图片：6张 PNG (15MB)
+- 压缩后：6张 WebP (0.8MB)
+- 压缩率：95%
+- 图片已转为base64嵌入HTML
+
+📦 发布结果：
+- 方式：Chrome CDP（浏览器自动化）
+- 状态：已保存到草稿箱
+```
 
 ### 示例2：交互式发布
 
@@ -309,11 +376,16 @@ mkdir -p ~/.local/share/baoyu-skills/chrome-profile
 2. 更可控的转换结果
 3. 减少外部依赖
 4. 提高发布成功率
+5. **支持base64图片嵌入**（解决微信编辑器无法加载本地图片的问题）
 
 **转换规则：**
 - 使用基础HTML标签
 - 保持语义结构
 - 支持常见Markdown语法
+- **图片处理**：`![alt](path.png)` → `<img src="data:image/webp;base64,xxx">`
+  - 先压缩为WebP格式（减少95%体积）
+  - 再转为base64嵌入HTML
+  - 确保图片可以在微信编辑器中正常显示
 
 ### 内容粘贴流程
 
@@ -338,6 +410,113 @@ mkdir -p ~/.local/share/baoyu-skills/chrome-profile
 4. **封面图片：** Chrome CDP方式暂不支持自动添加封面，需要手动添加
 5. **文件命名：** HTML文件与Markdown文件同名，保存在同一目录
 6. **依赖问题：** 遇到依赖错误时，自动切换到手动HTML创建方式
+7. **图片处理：**
+   - 自动将PNG图片压缩为WebP格式（质量75%）
+   - 压缩后图片转为base64嵌入HTML
+   - 如微信编辑器中图片显示异常，可能需要手动上传封面图
+   - 压缩后的WebP文件保留在原目录，可供手动上传使用
+8. **依赖安装位置：**
+   - sharp 依赖安装在 `.claude/skills/bo-x-pubwechat/node_modules/`
+   - 不会污染内容目录（05-图文工厂/公众号/）
+
+## 图片压缩与base64嵌入实现
+
+完整的脚本实现示例：
+
+```javascript
+// compress-and-embed.js
+import sharp from 'sharp';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
+import { basename, dirname, join } from 'path';
+
+/**
+ * 压缩图片并转为base64
+ * @param {string} imagePath - 图片路径
+ * @returns {string} - base64 data URL
+ */
+async function compressAndEmbed(imagePath) {
+  const webpPath = imagePath.replace('.png', '.webp');
+
+  // 如果已存在压缩后的webp文件，直接使用
+  if (!existsSync(webpPath)) {
+    // 压缩为WebP (质量75%)
+    await sharp(imagePath)
+      .webp({ quality: 75 })
+      .toFile(webpPath);
+  }
+
+  // 读取并转为base64
+  const buffer = readFileSync(webpPath);
+  const base64 = buffer.toString('base64');
+
+  return `data:image/webp;base64,${base64}`;
+}
+
+/**
+ * 处理Markdown中的图片
+ * @param {string} mdContent - Markdown内容
+ * @param {string} mdDir - Markdown文件所在目录
+ * @returns {string} - 处理后的HTML
+ */
+async function processImages(mdContent, mdDir) {
+  // 匹配Markdown图片语法: ![alt](path)
+  const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
+  let html = mdContent;
+
+  // 收集所有图片引用
+  const matches = [...mdContent.matchAll(imageRegex)];
+
+  console.log(`发现 ${matches.length} 张图片`);
+
+  // 逐一处理
+  for (const match of matches) {
+    const [fullMatch, alt, imgPath] = match;
+    const absolutePath = join(mdDir, imgPath);
+
+    if (existsSync(absolutePath)) {
+      try {
+        const base64Url = await compressAndEmbed(absolutePath);
+        // 替换为HTML img标签
+        const imgTag = `<img src="${base64Url}" alt="${alt}" style="max-width:100%;">`;
+        html = html.replace(fullMatch, imgTag);
+        console.log(`✓ 已处理: ${basename(imgPath)}`);
+      } catch (err) {
+        console.error(`✗ 处理失败: ${imgPath}`, err.message);
+      }
+    } else {
+      console.warn(`⚠ 图片不存在: ${absolutePath}`);
+    }
+  }
+
+  return html;
+}
+
+// 使用示例
+async function main() {
+  const mdFile = process.argv[2];
+  const mdDir = dirname(mdFile);
+  const mdContent = readFileSync(mdFile, 'utf-8');
+
+  const htmlWithImages = await processImages(mdContent, mdDir);
+
+  // 生成完整HTML
+  const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>文章标题</title>
+</head>
+<body>
+${convertMarkdownToHtml(htmlWithImages)}
+</body>
+</html>`;
+
+  writeFileSync(mdFile.replace('.md', '.html'), html);
+  console.log('HTML文件已生成');
+}
+
+main();
+```
 
 ## 与bo-系列集成
 
