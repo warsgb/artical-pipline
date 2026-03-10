@@ -1,0 +1,19 @@
+{
+  "name": "bo-5-distribute",
+  "version": "1.0.0",
+  "description": "将终稿内容改编为多平台版本（小红书、公众号、知乎等），自动生成配图",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "content-factory",
+    "distribute",
+    "xiaohongshu",
+    "wechat",
+    "zhihu",
+    "weibo"
+  ],
+  "author": "Claude Code",
+  "license": "MIT"
+}

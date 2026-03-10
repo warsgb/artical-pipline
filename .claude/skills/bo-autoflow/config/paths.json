@@ -1,0 +1,26 @@
+{
+  "base_dir": "D:/obs/social",
+  "content_factory": {
+    "net_collection": "00-网文收藏",
+    "inspiration": "01-灵感与素材库/1-日常灵感剪报",
+    "topics": "02-选题池/待写选题库",
+    "factory": {
+      "base": "03-内容工厂",
+      "outline": "03-内容工厂/1-大纲对焦区",
+      "draft": "03-内容工厂/2-初稿打磨区",
+      "final": "03-内容工厂/3-终稿发布区"
+    },
+    "video": "04-视频工厂",
+    "image_text": {
+      "base": "05-图文工厂",
+      "xiaohongshu": "05-图文工厂/小红书",
+      "wechat": "05-图文工厂/公众号",
+      "zhihu": "05-图文工厂/知乎",
+      "weibo": "05-图文工厂/微博"
+    },
+    "archive": "06-已发布归档",
+    "config": "90-系统配置"
+  },
+  "version": "1.0.0",
+  "last_updated": "2026-03-10"
+}
